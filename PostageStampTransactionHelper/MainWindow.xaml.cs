@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using static PostageStampTransactionHelper.ExchangeOpt;
 
 namespace PostageStampTransactionHelper
 {
@@ -27,17 +28,45 @@ namespace PostageStampTransactionHelper
             }
         }
 
-        private float _priceDelta;
-        public float PriceDelta
+        private float _salePriceDelta;
+        public float SalePriceDelta
         {
             get
             {
-                return _priceDelta;
+                return _salePriceDelta;
             }
             set
             {
-                _priceDelta = value;
-                OnPropertyChanged(nameof(PriceDelta));
+                _salePriceDelta = value;
+                OnPropertyChanged(nameof(SalePriceDelta));
+            }
+        }
+
+        private float _salePriceResult;
+        public float SalePriceResult
+        {
+            get
+            {
+                return _salePriceResult;
+            }
+            set
+            {
+                _salePriceResult = value;
+                OnPropertyChanged(nameof(SalePriceResult));
+            }
+        }
+
+        private int _saleCount;
+        public int SaleCount
+        {
+            get
+            {
+                return _saleCount;
+            }
+            set
+            {
+                _saleCount = value;
+                OnPropertyChanged(nameof(SaleCount));
             }
         }
 
@@ -49,12 +78,13 @@ namespace PostageStampTransactionHelper
 
         private void Button_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            ExchangeOpt.SaleOpt();
+            SaleOpt();
         }
 
         private void Window_Loaded(object sender, System.Windows.RoutedEventArgs e)
         {
             Sale1Price = 0.01f;
+            SalePriceDelta = 0.01f;
         }
     }
 }
