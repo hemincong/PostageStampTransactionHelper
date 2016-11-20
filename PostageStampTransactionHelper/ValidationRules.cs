@@ -7,10 +7,10 @@ namespace PostageStampTransactionHelper
     {
         public override ValidationResult Validate(object value, CultureInfo cultureInfo)
         {
-            int i;
-            return int.TryParse(value?.ToString(), out i)
+            uint i;
+            return uint.TryParse(value?.ToString(), out i)
                 ? new ValidationResult(true, null)
-                : new ValidationResult(false, "Please enter a valid float value.");
+                : new ValidationResult(false, "Please enter a valid unsigned int value.");
         }
     }
 
@@ -34,6 +34,7 @@ namespace PostageStampTransactionHelper
             var str = value as string;
             if (str == null)
                 return new ValidationResult(false, "Please enter some text");
+
             return !str.EndsWith(MustEndWith)
                 ? new ValidationResult(false, $"Text must end with '{MustEndWith}'")
                 : new ValidationResult(true, null);
