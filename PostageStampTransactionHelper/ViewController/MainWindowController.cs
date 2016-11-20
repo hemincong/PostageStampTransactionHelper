@@ -1,26 +1,21 @@
 ﻿using System.ComponentModel;
-using static PostageStampTransactionHelper.ExchangeOpt;
 
-namespace PostageStampTransactionHelper
+namespace PostageStampTransactionHelper.ViewController
 {
-    /// <summary>
-    ///     Interaction logic for MainWindow.xaml
-    /// </summary>
-    public partial class MainWindow : INotifyPropertyChanged
+    internal class MainWindowController : INotifyPropertyChanged
     {
-        public MainWindow()
+        public MainWindowController()
         {
-            InitializeComponent();
-            DataContext = this;
+            Sale1Price = 0.01f;
+            SaleCount = 1;
+            SalePriceDelta = 0.01f;
         }
 
         private float _sale1Price;
+
         public float Sale1Price
         {
-            get
-            {
-                return _sale1Price;
-            }
+            get { return _sale1Price; }
             set
             {
                 _sale1Price = value;
@@ -29,26 +24,23 @@ namespace PostageStampTransactionHelper
         }
 
         private float _salePriceDelta;
+
         public float SalePriceDelta
         {
-            get
-            {
-                return _salePriceDelta;
-            }
+            get { return _salePriceDelta; }
             set
             {
                 _salePriceDelta = value;
+                SalePriceResult = _sale1Price + _salePriceDelta;
                 OnPropertyChanged(nameof(SalePriceDelta));
             }
         }
 
         private float _salePriceResult;
+
         public float SalePriceResult
         {
-            get
-            {
-                return _salePriceResult;
-            }
+            get { return _salePriceResult; }
             set
             {
                 _salePriceResult = value;
@@ -57,12 +49,10 @@ namespace PostageStampTransactionHelper
         }
 
         private int _saleCount;
+
         public int SaleCount
         {
-            get
-            {
-                return _saleCount;
-            }
+            get { return _saleCount; }
             set
             {
                 _saleCount = value;
@@ -71,20 +61,10 @@ namespace PostageStampTransactionHelper
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
+
         protected void OnPropertyChanged(string name)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
-        }
-
-        private void Button_Click(object sender, System.Windows.RoutedEventArgs e)
-        {
-            SaleOpt();
-        }
-
-        private void Window_Loaded(object sender, System.Windows.RoutedEventArgs e)
-        {
-            Sale1Price = 0.01f;
-            SalePriceDelta = 0.01f;
         }
     }
 }
