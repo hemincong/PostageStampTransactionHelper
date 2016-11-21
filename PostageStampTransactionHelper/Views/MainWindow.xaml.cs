@@ -22,7 +22,8 @@ namespace PostageStampTransactionHelper.Views
         {
             InitializeComponent();
             mc = new MainWindowController();
-            DataContext = mc;
+            SaleList.ItemsSource = mc.SaleItems;
+            BuyList.ItemsSource = mc.BuyItems;
         }
 
         private void Button_Click(object sender, System.Windows.RoutedEventArgs e)
