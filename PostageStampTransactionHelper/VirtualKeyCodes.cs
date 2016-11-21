@@ -3,6 +3,7 @@ namespace PostageStampTransactionHelper
 {
     public class VirtualKeyCodes
     {
+        public const int WM_HOTKEY = 0x0312;
         public const int HOTKEY_ID = 9000;
 
         //Modifiers:
