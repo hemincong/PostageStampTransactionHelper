@@ -63,6 +63,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="ViewController\MainWindowController.cs" />
+    <Compile Include="ViewModel\TradingItem.cs" />
     <Compile Include="VirtualKeyCodes.cs" />
     <Compile Include="ValidationRules.cs" />
     <Page Include="Views\MainWindow.xaml">
