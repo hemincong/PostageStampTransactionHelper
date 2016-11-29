@@ -10,9 +10,9 @@ namespace PostageStampTransactionHelper.ViewModel
 
         private float _tradingPrice;
 
-        public TradingItem(string shutCutKey)
+        public TradingItem(uint virtualKey)
         {
-            ShutCutKey = shutCutKey;
+            ShortCutKey = virtualKey;
         }
 
         public float Price
@@ -57,7 +57,7 @@ namespace PostageStampTransactionHelper.ViewModel
             }
         }
 
-        public string ShutCutKey { get; }
+        public uint ShortCutKey { get; }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
