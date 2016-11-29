@@ -46,8 +46,10 @@ namespace PostageStampTransactionHelper.Views
             _source = HwndSource.FromHwnd(_windowHandle);
             _source?.AddHook(HwndHook);
 
-            RegisterHotKey(_windowHandle, VirtualKeyCodes.HOTKEY_ID, VirtualKeyCodes.MOD_NONE, VirtualKeyCodes.VK_TAB);
-                //CTRL + CAPS_LOCK;
+            foreach ( var k in mc.Shortcuts())
+            {
+                  RegisterHotKey(_windowHandle, VirtualKeyCodes.HOTKEY_ID, VirtualKeyCodes.MOD_NONE, k);
+            }
         }
 
         private static IntPtr HwndHook(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
