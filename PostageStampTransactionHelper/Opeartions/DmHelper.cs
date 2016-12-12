@@ -1,4 +1,4 @@
-﻿namespace PostageStampTransactionHelper
+﻿namespace PostageStampTransactionHelper.Opeartions
 {
     internal class DmHelper
     {
