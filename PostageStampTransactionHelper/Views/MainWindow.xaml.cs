@@ -1,8 +1,9 @@
 ﻿using PostageStampTransactionHelper.ViewController;
 using System;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows.Interop;
-using static PostageStampTransactionHelper.ExchangeOpt;
+using PostageStampTransactionHelper.Utils;
 
 namespace PostageStampTransactionHelper.Views
 {
@@ -28,7 +29,6 @@ namespace PostageStampTransactionHelper.Views
 
         private void Button_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            SaleOpt();
         }
 
         private void Window_Loaded(object sender, System.Windows.RoutedEventArgs e)
@@ -40,37 +40,23 @@ namespace PostageStampTransactionHelper.Views
 
         private void MainWindow_OnSourceInitialized(object sender, EventArgs e)
         {
-            //base.OnSourceInitialized(e);
-
             _windowHandle = new WindowInteropHelper(this).Handle;
             _source = HwndSource.FromHwnd(_windowHandle);
             _source?.AddHook(HwndHook);
 
-            foreach ( var k in mc.Shortcuts())
-            {
-                  RegisterHotKey(_windowHandle, VirtualKeyCodes.HOTKEY_ID, VirtualKeyCodes.MOD_NONE, k);
-            }
+            mc.Shortcuts().ToList().ForEach(k => RegisterHotKey(_windowHandle, VirtualKeyCodes.HOTKEY_ID, VirtualKeyCodes.MOD_NONE, k));
         }
 
-        private static IntPtr HwndHook(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
+        private IntPtr HwndHook(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
         {
-            switch (msg)
-            {
-                case VirtualKeyCodes.WM_HOTKEY:
-                    switch (wParam.ToInt32())
-                    {
-                        case VirtualKeyCodes.HOTKEY_ID:
-                            int vkey = (((int) lParam >> 16) & 0xFFFF);
-                            if (vkey == VirtualKeyCodes.VK_TAB)
-                            {
-                                //mc.SaleCount += 1;
-                                //tblock.Text += "CapsLock was pressed" + Environment.NewLine;
-                            }
-                            handled = true;
-                            break;
-                    }
-                    break;
-            }
+            if (msg != VirtualKeyCodes.WM_HOTKEY) return IntPtr.Zero;
+
+            var wp = wParam.ToInt32();
+            if (wp != VirtualKeyCodes.HOTKEY_ID) return IntPtr.Zero;
+            handled = true;
+
+            var vkey = ((int) lParam >> 16) & 0xFFFF;
+            mc.OnRecvKey((uint)vkey);
             return IntPtr.Zero;
         }
 
