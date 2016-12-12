@@ -1,6 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Globalization;
+using System.Linq;
+using System.Windows.Data;
 
-namespace PostageStampTransactionHelper
+// ReSharper disable InconsistentNaming
+
+namespace PostageStampTransactionHelper.Utils
 {
     public class VirtualKeyCodes
     {
@@ -17,6 +24,7 @@ namespace PostageStampTransactionHelper
         public const uint VK_CAPITAL = 0x14;
         public const uint VK_TAB = 0x09;
         public const uint VK_RETURN = 0x0D;
+        public const uint VF_F12 = 0x71;
 
         public const uint A_KEY = 0x41;
         public const uint B_KEY = 0x42;
@@ -27,7 +35,7 @@ namespace PostageStampTransactionHelper
         public const uint Y_KEY = 0x59;
         public const uint Z_KEY = 0x5A;
 
-        static private Dictionary<uint, string> key_name_mapper = new Dictionary<uint, string>
+        private static readonly Dictionary<uint, string> KeyNameMapper = new Dictionary<uint, string>
         {
             { A_KEY, "A" },
             { B_KEY, "B" },
@@ -39,11 +47,31 @@ namespace PostageStampTransactionHelper
             { Z_KEY, "Z" },
         };
 
-        static public string GetKeyName(uint virtualKey)
+        public static string GetKeyName(uint virtualKey)
         {
             string name;
-            key_name_mapper.TryGetValue(virtualKey, out name);
+            KeyNameMapper.TryGetValue(virtualKey, out name);
             return name;
+        }
+
+        public static uint GetKeyCode(string s)
+        {
+            Debug.Assert(s.Length == 1);
+            return (from p in KeyNameMapper where p.Value == s select p.Key).FirstOrDefault();
+        }
+    }
+
+    [ValueConversion(typeof(uint), typeof(string))]
+    public class KeyConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return VirtualKeyCodes.GetKeyName((uint)value);
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return VirtualKeyCodes.GetKeyCode(value as string);
         }
     }
 }
