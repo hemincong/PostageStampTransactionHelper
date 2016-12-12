@@ -1,7 +1,7 @@
 ﻿using System.Globalization;
 using System.Windows.Controls;
 
-namespace PostageStampTransactionHelper
+namespace PostageStampTransactionHelper.Utils
 {
     public class StringToIntValidationRule : ValidationRule
     {
