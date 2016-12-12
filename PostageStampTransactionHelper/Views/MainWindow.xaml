@@ -3,12 +3,15 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:PostageStampTransactionHelper"
         xmlns:viewModel="clr-namespace:PostageStampTransactionHelper.ViewModel"
+        xmlns:utils="clr-namespace:PostageStampTransactionHelper.Utils"
         mc:Ignorable="d"
         Height="520" Width="525" Title="挂单助手" Loaded="Window_Loaded"
         SourceInitialized="MainWindow_OnSourceInitialized"
         Closed="MainWindow_OnClosed">
+    <Window.Resources>
+        <utils:KeyConverter x:Key="KeyCodeConverter" />
+    </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="360" />
@@ -41,7 +44,7 @@
                             <TextBox.Text>
                                 <Binding Path="Price" UpdateSourceTrigger="PropertyChanged">
                                     <Binding.ValidationRules>
-                                        <local:StringToFloatValidationRule />
+                                        <utils:StringToFloatValidationRule />
                                     </Binding.ValidationRules>
                                 </Binding>
                             </TextBox.Text>
@@ -51,7 +54,7 @@
                             <TextBox.Text>
                                 <Binding Path="PriceDelta" UpdateSourceTrigger="PropertyChanged">
                                     <Binding.ValidationRules>
-                                        <local:StringToFloatValidationRule />
+                                        <utils:StringToFloatValidationRule />
                                     </Binding.ValidationRules>
                                 </Binding>
                             </TextBox.Text>
@@ -62,7 +65,7 @@
                             <TextBox.Text>
                                 <Binding Path="TradingPrice" UpdateSourceTrigger="PropertyChanged">
                                     <Binding.ValidationRules>
-                                        <local:StringToFloatValidationRule />
+                                        <utils:StringToFloatValidationRule />
                                     </Binding.ValidationRules>
                                 </Binding>
                             </TextBox.Text>
@@ -72,13 +75,13 @@
                             <TextBox.Text>
                                 <Binding Path="Count" UpdateSourceTrigger="PropertyChanged">
                                     <Binding.ValidationRules>
-                                        <local:StringToIntValidationRule />
+                                        <utils:StringToIntValidationRule />
                                     </Binding.ValidationRules>
                                 </Binding>
                             </TextBox.Text>
                         </TextBox>
-                        <Button Grid.Column="4" Grid.Row="1" Height="20" Width="50" Click="Button_Click" Content="{Binding Path=ShutCutKey}">
-                        </Button>
+                        <Button Grid.Column="4" Grid.Row="1" Height="20" Width="50" Click="Button_Click"
+                                Content="{Binding Path=ShortCutKey, Converter={StaticResource KeyCodeConverter}}" />
                     </Grid>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
@@ -107,7 +110,7 @@
                             <TextBox.Text>
                                 <Binding Path="Price" UpdateSourceTrigger="PropertyChanged">
                                     <Binding.ValidationRules>
-                                        <local:StringToFloatValidationRule />
+                                        <utils:StringToFloatValidationRule />
                                     </Binding.ValidationRules>
                                 </Binding>
                             </TextBox.Text>
@@ -117,7 +120,7 @@
                             <TextBox.Text>
                                 <Binding Path="PriceDelta" UpdateSourceTrigger="PropertyChanged">
                                     <Binding.ValidationRules>
-                                        <local:StringToFloatValidationRule />
+                                        <utils:StringToFloatValidationRule />
                                     </Binding.ValidationRules>
                                 </Binding>
                             </TextBox.Text>
@@ -128,7 +131,7 @@
                             <TextBox.Text>
                                 <Binding Path="TradingPrice" UpdateSourceTrigger="PropertyChanged">
                                     <Binding.ValidationRules>
-                                        <local:StringToFloatValidationRule />
+                                        <utils:StringToFloatValidationRule />
                                     </Binding.ValidationRules>
                                 </Binding>
                             </TextBox.Text>
@@ -138,13 +141,13 @@
                             <TextBox.Text>
                                 <Binding Path="Count" UpdateSourceTrigger="PropertyChanged">
                                     <Binding.ValidationRules>
-                                        <local:StringToIntValidationRule />
+                                        <utils:StringToIntValidationRule />
                                     </Binding.ValidationRules>
                                 </Binding>
                             </TextBox.Text>
                         </TextBox>
-                        <Button Grid.Column="4" Grid.Row="1" Height="20" Width="50" Click="Button_Click" Content="{Binding Path=ShutCutKey}">
-                        </Button>
+                        <Button Grid.Column="4" Grid.Row="1" Height="20" Width="50" Click="Button_Click"
+                                Content="{Binding Path=ShortCutKey, Converter={StaticResource KeyCodeConverter}}" />
                     </Grid>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
