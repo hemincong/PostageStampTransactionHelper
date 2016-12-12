@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using PostageStampTransactionHelper.Opeartions;
 
 namespace PostageStampTransactionHelper.ViewModel
 {
@@ -9,10 +10,12 @@ namespace PostageStampTransactionHelper.ViewModel
         private float _priceDelta;
 
         private float _tradingPrice;
+        private readonly IExchangeInterface _exchangeInterface;
 
-        public TradingItem(uint virtualKey)
+        public TradingItem(uint virtualKey, IExchangeInterface exchangeInterface)
         {
             ShortCutKey = virtualKey;
+            _exchangeInterface = exchangeInterface;
         }
 
         public float Price
@@ -64,6 +67,11 @@ namespace PostageStampTransactionHelper.ViewModel
         protected void OnPropertyChanged(string name)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        }
+
+        public void ExOpt()
+        {
+             _exchangeInterface.ExchangeOpt();
         }
     }
 }
