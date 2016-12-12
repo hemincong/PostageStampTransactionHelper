@@ -81,7 +81,8 @@
                             </TextBox.Text>
                         </TextBox>
                         <Button Grid.Column="4" Grid.Row="1" Height="20" Width="50" Click="Button_Click"
-                                Content="{Binding Path=ShortCutKey, Converter={StaticResource KeyCodeConverter}}" />
+                                Content="{Binding Path=ShortCutKey, Converter={StaticResource KeyCodeConverter}}" 
+                                Tag="{Binding Path=ShortCutKey}"/>
                     </Grid>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
@@ -147,7 +148,8 @@
                             </TextBox.Text>
                         </TextBox>
                         <Button Grid.Column="4" Grid.Row="1" Height="20" Width="50" Click="Button_Click"
-                                Content="{Binding Path=ShortCutKey, Converter={StaticResource KeyCodeConverter}}" />
+                                Content="{Binding Path=ShortCutKey, Converter={StaticResource KeyCodeConverter}}" 
+                                Tag="{Binding Path=ShortCutKey}"/>
                     </Grid>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>

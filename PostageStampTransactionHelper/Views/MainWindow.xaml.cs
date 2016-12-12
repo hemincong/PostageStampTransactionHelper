@@ -2,6 +2,7 @@
 using System;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Windows.Controls;
 using System.Windows.Interop;
 using PostageStampTransactionHelper.Utils;
 
@@ -29,6 +30,8 @@ namespace PostageStampTransactionHelper.Views
 
         private void Button_Click(object sender, System.Windows.RoutedEventArgs e)
         {
+            var btn = sender as Button;
+            if (btn != null) mc.OnRecvKey((uint)btn.Tag);
         }
 
         private void Window_Loaded(object sender, System.Windows.RoutedEventArgs e)
