@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace PostageStampTransactionHelper
+namespace PostageStampTransactionHelper.Utils
 {
     internal class MessageUtils
     {
