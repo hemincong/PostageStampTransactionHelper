@@ -12,15 +12,15 @@ namespace PostageStampTransactionHelper.ViewController
         {
             SaleItems = new List<TradingItem>
             {
-                new TradingItem(VirtualKeyCodes.X_KEY, new Sale1Opt()) {Price = 0.01f, Count = 1, PriceDelta = 0.01f},
-                new TradingItem(VirtualKeyCodes.Y_KEY, new Sale1Opt()) {Price = 0.01f, Count = 1, PriceDelta = 0.02f},
-                new TradingItem(VirtualKeyCodes.Z_KEY, new Sale1Opt()) {Price = 0.01f, Count = 1, PriceDelta = 0.03f}
+                new TradingItem(VirtualKeyCodes.A_KEY, new SaleOpt()) {Price = 0.01f, Count = 1, PriceDelta = 0.01f},
+                new TradingItem(VirtualKeyCodes.B_KEY, new SaleOpt()) {Price = 0.01f, Count = 1, PriceDelta = 0.02f},
+                new TradingItem(VirtualKeyCodes.C_KEY, new SaleOpt()) {Price = 0.01f, Count = 1, PriceDelta = 0.03f}
             };
             BuyItems = new List<TradingItem>
             {
-                new TradingItem(VirtualKeyCodes.I_KEY, new Sale1Opt()) {Price = 0.01f, Count = 1, PriceDelta = 0.01f},
-                new TradingItem(VirtualKeyCodes.J_KEY, new Sale1Opt()) {Price = 0.01f, Count = 1, PriceDelta = 0.02f},
-                new TradingItem(VirtualKeyCodes.K_KEY, new Sale1Opt()) {Price = 0.01f, Count = 1, PriceDelta = 0.03f}
+                new TradingItem(VirtualKeyCodes.D_KEY, new SaleOpt()) {Price = 0.01f, Count = 1, PriceDelta = 0.01f},
+                new TradingItem(VirtualKeyCodes.E_KEY, new SaleOpt()) {Price = 0.01f, Count = 1, PriceDelta = 0.02f},
+                new TradingItem(VirtualKeyCodes.F_KEY, new SaleOpt()) {Price = 0.01f, Count = 1, PriceDelta = 0.03f}
             };
         }
 

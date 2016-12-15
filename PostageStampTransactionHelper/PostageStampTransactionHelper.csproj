@@ -63,7 +63,8 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Opeartions\ExchangeInterface.cs" />
-    <Compile Include="Opeartions\Sale1Opt.cs" />
+    <Compile Include="Opeartions\BuyOpt.cs" />
+    <Compile Include="Opeartions\SaleOpt.cs" />
     <Compile Include="ViewController\MainWindowController.cs" />
     <Compile Include="ViewModel\TradingItem.cs" />
     <Compile Include="Utils\VirtualKeyCodes.cs" />
@@ -134,7 +135,7 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="words.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
