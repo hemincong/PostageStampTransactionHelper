@@ -24,13 +24,20 @@ namespace PostageStampTransactionHelper.Utils
         public const uint VK_CAPITAL = 0x14;
         public const uint VK_TAB = 0x09;
         public const uint VK_RETURN = 0x0D;
-        public const uint VF_F12 = 0x71;
+        public const uint VF_F1 = 0x70;
+        public const uint VF_F2 = 0x71;
+        public const uint VF_F12 = 0x7B;
 
         public const uint A_KEY = 0x41;
         public const uint B_KEY = 0x42;
+        public const uint C_KEY = 0x43;
+        public const uint D_KEY = 0x44;
+        public const uint E_KEY = 0x45;
+        public const uint F_KEY = 0x46;
         public const uint I_KEY = 0x49;
         public const uint J_KEY = 0x4A;
         public const uint K_KEY = 0x4B;
+
         public const uint X_KEY = 0x58;
         public const uint Y_KEY = 0x59;
         public const uint Z_KEY = 0x5A;
@@ -39,9 +46,14 @@ namespace PostageStampTransactionHelper.Utils
         {
             { A_KEY, "A" },
             { B_KEY, "B" },
+            { C_KEY, "C" },
+            { D_KEY, "D" },
+            { E_KEY, "E" },
+            { F_KEY, "F" },
             { I_KEY, "I" },
             { J_KEY, "J" },
             { K_KEY, "K" },
+
             { X_KEY, "X" },
             { Y_KEY, "Y" },
             { Z_KEY, "Z" },
